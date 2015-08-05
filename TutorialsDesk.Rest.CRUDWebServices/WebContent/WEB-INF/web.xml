@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name>TutorialsDesk.Rest.CRUDWebServices</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+   <servlet>
+    <servlet-name>REST Web Services Hello World</servlet-name>
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+     <!-- Register resources and providers under com.tutorialsdesk.rest.helloworld package. -->
+    <init-param>
+        <param-name>jersey.config.server.provider.packages</param-name>
+        <param-value>
+            com.tutorialsdesk.rest.resources,
+            io.swagger.jaxrs.listing
+        </param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+      <servlet-name>Jersey2Config</servlet-name>
+      <servlet-class>io.swagger.jaxrs.config.DefaultJaxrsConfig</servlet-class>
+      <init-param>
+          <param-name>api.version</param-name>
+          <param-value>1.0.0</param-value>
+      </init-param>
+      <init-param>
+          <param-name>swagger.api.basepath</param-name>
+          <param-value>/rest</param-value>
+      </init-param>
+      <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>REST Web Services Hello World</servlet-name>
+    <url-pattern>/rest/*</url-pattern>
+  </servlet-mapping>
+</web-app>
+  
+  
